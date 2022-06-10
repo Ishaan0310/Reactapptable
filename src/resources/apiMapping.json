@@ -1,10 +1,10 @@
 {
     "employeeData": {
         "getAll":"https://table-t.herokuapp.com/interns",
-        "Post":"http://localhost:8084/interns",
-        "getonw":"http://localhost:8084/interns",
-        "put":"http://localhost:8084/interns",
-        "delete":"http://localhost:8084/interns"
+        "Post":"https://table-t.herokuapp.com/interns",
+        "getonw":"https://table-t.herokuapp.com/interns",
+        "put":"https://table-t.herokuapp.com/internss",
+        "delete":"https://table-t.herokuapp.com/interns"
         
     }
 }

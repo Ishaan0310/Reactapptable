@@ -118,7 +118,7 @@ const handleClose2 = () => {setOpenView(false);};
 	{
       let payload = 
 	  {
-        //"employee_id": employee_id,
+        "employee_id": employee_id,
         "start_date": start_date,
         "end_date": end_date,
         "job_id": job_id,
