@@ -101,6 +101,11 @@ const handleClose2 = () => {setOpenView(false);};
   const onClickofSaveRecord = () => 
   {
     setAddOrEdit("Save")
+	  setemployee_id("")
+        setstart_date("")
+        setend_date("")
+        setjob_id("")
+        setdepartment_id("")
     handleClickOpen()
   }
 
