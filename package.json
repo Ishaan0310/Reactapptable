@@ -22,13 +22,13 @@
     "web-vitals": "^2.1.4"
   },
   "engines": {
-<<<<<<< HEAD
+
     "node": "16.15.1"
   },
-=======
+
     "node": 16.15.1
   }
->>>>>>> 8f015c22ad71559ce8d69db3cc53cb1bcdaf95bb
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
