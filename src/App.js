@@ -35,7 +35,7 @@ export default function App() {
       getActions: (event) => [
         <GridActionsCellItem  onClick={(e) => onClickOfViewButton(event)} icon={<VisibilityIcon/>} label="View" />,                   
         <GridActionsCellItem  onClick={(e) => onClickOfEditButton(event)} icon={<EditIcon/>} label="Edit" />,  
-         <GridActionsCellItem onClick={(e) => deleteRecord(event.id)} icon={<DeleteIcon/>} label="Delete" />,
+        <GridActionsCellItem onClick={(e) => deleteRecord(event.id)} icon={<DeleteIcon/>} label="Delete" />,
     ]
       
     },
@@ -79,8 +79,8 @@ export default function App() {
   const [rows, setRows] = React.useState([])
   const [addOrEdit, setAddOrEdit] = React.useState("")
   const [editId, setEditId] = React.useState("")
-  const handleClickOpen2 = () => {setOpenView(true);};
   const handleClickOpen = () => {setOpen(true);};
+  const handleClickOpen2 = () => {setOpenView(true);};
   const [openview, setOpenView] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [employee_id, setemployee_id] = React.useState("");
@@ -102,12 +102,12 @@ export default function App() {
   }
   const onClickofSaveRecord = () => 
   {
+    setAddOrEdit("Save")
 	  setemployee_id("")
     setstart_date("")
     setend_date("")
     setjob_id("")
     setdepartment_id("")
-
     handleClickOpen()
   }
 
@@ -133,7 +133,7 @@ export default function App() {
       
       }
       console.log("The Data to DB is ", payload)
-      console.log(apiUrlMapping)
+      console.log(apiUrlMapping.employeeData.Post)
       axios.post(apiUrlMapping.employeeData.Post, payload).then(response => 
 
 	  {
@@ -143,9 +143,7 @@ export default function App() {
       setstart_date("")
       setend_date("")
       setjob_id("")
-      setdepartment_id("")
-        
-        
+      setdepartment_id("") 
       })
     }
   }
