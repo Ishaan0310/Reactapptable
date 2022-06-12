@@ -35,7 +35,7 @@ export default function App() {
       getActions: (event) => [
         <GridActionsCellItem  onClick={(e) => onClickOfViewButton(event)} icon={<VisibilityIcon/>} label="View" />,                   
         <GridActionsCellItem  onClick={(e) => onClickOfEditButton(event)} icon={<EditIcon/>} label="Edit" />,  
-                            <GridActionsCellItem onClick={(e) => deleteRecord(event.id)} icon={<DeleteIcon/>} label="Delete" />,
+         <GridActionsCellItem onClick={(e) => deleteRecord(event.id)} icon={<DeleteIcon/>} label="Delete" />,
     ]
       
     },
@@ -83,13 +83,15 @@ export default function App() {
   const handleClickOpen = () => {setOpen(true);};
   const [openview, setOpenView] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const [employee_id, setemployee_id] 	= React.useState("");
- const [start_date, setstart_date] 			  = React.useState("");
- const [end_date, setend_date] 	= React.useState("");
- const [job_id, setjob_id] 			= React.useState("");
- const [department_id, setdepartment_id] 		= React.useState("");
-const handleClose = () => {setOpen(false);};
-const handleClose2 = () => {setOpenView(false);};
+  const [employee_id, setemployee_id] = React.useState("");
+  const [start_date, setstart_date] = React.useState("");
+  const [end_date, setend_date]	= React.useState("");
+  const [job_id, setjob_id]	= React.useState("");
+  const [department_id, setdepartment_id]	= React.useState("");
+  const handleClose = () => {setOpen(false);};
+  const handleClose2 = () => {setOpenView(false);};
+
+
   const getAllRecords=()=>
   {
     axios.get(apiUrlMapping.employeeData.getAll).then(response =>
@@ -101,6 +103,11 @@ const handleClose2 = () => {setOpenView(false);};
   const onClickofSaveRecord = () => 
   {
     setAddOrEdit("Save")
+    setemployee_id("")
+    setstart_date("")
+    setend_date("")
+    setjob_id("")
+    setdepartment_id("")
     handleClickOpen()
   }
 
@@ -127,23 +134,24 @@ const handleClose2 = () => {setOpenView(false);};
       }
       console.log("The Data to DB is ", payload)
       console.log(apiUrlMapping)
-      axios.post(apiUrlMapping.employeeData.Post, payload).then(() => 
+      axios.post(apiUrlMapping.employeeData.Post, payload).then(response => 
 
 	  {
-	  getAllRecords()
-        handleClose()
-        setemployee_id("")
-        setstart_date("")
-        setend_date("")
-        setjob_id("")
-        setdepartment_id("")
+	    getAllRecords()
+      handleClose()
+      setemployee_id("")
+      setstart_date("")
+      setend_date("")
+      setjob_id("")
+      setdepartment_id("")
+        
         
       })
     }
   }
 const deleteRecord = (index) =>
 {
-  let dataId = rows[index].employee_id  
+  let dataId = rows[index]._id  
   console.log(apiUrlMapping.employeeData.delete) 
   console.log(dataId)
   axios.delete(apiUrlMapping.employeeData.delete + "/" + dataId).then(()=>{getAllRecords();});
@@ -153,13 +161,13 @@ const onClickOfEditButton = (e) =>
 {
   setAddOrEdit("Edit")
   let editRecord = rows[e.id]
-  console.log(editRecord.employee_id)
+  console.log(editRecord._id)
   setemployee_id(editRecord.employee_id)
   setstart_date(editRecord.start_date)
   setend_date(editRecord.end_date)
   setjob_id(editRecord.job_id)
   setdepartment_id(editRecord.department_id)
-  setEditId(editRecord.employee_id)
+  setEditId(editRecord._id)
   handleClickOpen()
 } 
 const editRecordAndClose = () => 

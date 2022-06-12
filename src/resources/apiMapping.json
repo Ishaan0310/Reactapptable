@@ -2,8 +2,8 @@
     "employeeData": {
         "getAll":"https://table-t.herokuapp.com/interns",
         "Post":"https://table-t.herokuapp.com/interns",
-        "getonw":"https://table-t.herokuapp.com/interns",
-        "put":"https://table-t.herokuapp.com/internss",
+       
+        "put":"https://table-t.herokuapp.com/interns",
         "delete":"https://table-t.herokuapp.com/interns"
         
     }
