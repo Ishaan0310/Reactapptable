@@ -102,20 +102,12 @@ export default function App() {
   }
   const onClickofSaveRecord = () => 
   {
-    setAddOrEdit("Save")
-<<<<<<< HEAD
-    setemployee_id("")
+	  setemployee_id("")
     setstart_date("")
     setend_date("")
     setjob_id("")
     setdepartment_id("")
-=======
-	  setemployee_id("")
-        setstart_date("")
-        setend_date("")
-        setjob_id("")
-        setdepartment_id("")
->>>>>>> 547ed9f0c3bc645fcf6284606f980b9b79775ed7
+
     handleClickOpen()
   }
 
