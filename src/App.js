@@ -81,8 +81,8 @@ export default function App() {
   const [editId, setEditId] = React.useState("")
   const handleClickOpen = () => {setOpen(true);};
   const handleClickOpen2 = () => {setOpenView(true);};
-  const [openview, setOpenView] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [openview, setOpenView] = React.useState(false);
   const [employee_id, setemployee_id] = React.useState("");
   const [start_date, setstart_date] = React.useState("");
   const [end_date, setend_date]	= React.useState("");
@@ -97,7 +97,6 @@ export default function App() {
     axios.get(apiUrlMapping.employeeData.getAll).then(response =>
       {
         setRows(geRowWithId(response.data))
-
       });
   }
   const onClickofSaveRecord = () => 
@@ -145,13 +144,12 @@ export default function App() {
       setjob_id("")
       setdepartment_id("") 
       })
+      console.log(apiUrlMapping.employeeData.Post)
     }
   }
 const deleteRecord = (index) =>
 {
   let dataId = rows[index]._id  
-  console.log(apiUrlMapping.employeeData.delete) 
-  console.log(dataId)
   axios.delete(apiUrlMapping.employeeData.delete + "/" + dataId).then(()=>{getAllRecords();});
 
 }
@@ -159,7 +157,6 @@ const onClickOfEditButton = (e) =>
 {
   setAddOrEdit("Edit")
   let editRecord = rows[e.id]
-  console.log(editRecord._id)
   setemployee_id(editRecord.employee_id)
   setstart_date(editRecord.start_date)
   setend_date(editRecord.end_date)
@@ -232,14 +229,15 @@ const onClickOfViewButton = (e) =>
           <TextField autoFocus margin="dense" id="start_date" onChange={(e) => { setstart_date(e.target.value) }}value={start_date} label="start_date" type="text" fullWidth/>
           <TextField autoFocus margin="dense" id="end_date" onChange={(e) => { setend_date(e.target.value) }} value={end_date} label="end_date" type="text" fullWidth/>
           <TextField autoFocus margin="dense" id="job_id" onChange={(e) => { setjob_id(e.target.value) }} value={job_id} label="job_id" type="text" fullWidth/>
-          <TextField autoFocus margin="dense" id="department_id" onChange={(e) => { setdepartment_id(e.target.value) }} value={department_id} label="department_id" type="text" fullWidth/>
-          
+          <TextField autoFocus margin="dense" id="department_id" onChange={(e) => { setdepartment_id(e.target.value) }} value={department_id} label="department_id" type="text" fullWidth/> 
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={() => { addOrEditRecordAndClose(addOrEdit) }}>Save</Button>
         </DialogActions>
   </Dialog>
+
+
   <Dialog open={openview} onClose={handleClose2}>
         <DialogTitle>Employee</DialogTitle>
         <DialogContent>
@@ -250,7 +248,7 @@ const onClickOfViewButton = (e) =>
           <TextField disabled={true} autoFocus margin="dense" id="department_id" onChange={(e) => { setdepartment_id(e.target.value) }} value={department_id} label="department_id" type="text" fullWidth />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose2}>Cancel</Button>
+        <Button onClick={handleClose2}>Cancel</Button>
         </DialogActions>
       </Dialog>
     </div>
