@@ -101,8 +101,9 @@ export default function App() {
   }
   const onClickofSaveRecord = () => 
   {
-    setAddOrEdit("Save")
-	  setemployee_id("")
+   
+    setAddOrEdit("Edit")
+    setemployee_id("")
     setstart_date("")
     setend_date("")
     setjob_id("")
